@@ -1,8 +1,20 @@
-const title = 1;
-const screens = 2;
+const title = "Mytitle";
+console.log(typeof title);
+
+const screens = "Простые, Сложные, Интерактивные";
+console.log(screens.length);
+console.log(screens.toLocaleLowerCase());
+console.log(screens.split(", "));
+
 const screenPrice = 3;
-const rollback = 4;
-const fullPrice = 5;
-const adaptiv = 6;
-alert("Иисусе, кому может нравится GIT?");
-console.log("Hello, GIT!");
+console.log("Стоимость верстки экранов " + screenPrice + " юайней");
+
+const rollback = 95;
+
+const fullPrice = 10;
+console.log(typeof fullPrice);
+console.log('Стоимость разработки сайта ' + fullPrice + ' юаней');
+console.log("Процент отката посреднику за работу = " + fullPrice * (rollback / 100) + "%");
+
+const adaptiv = true;
+console.log(typeof adaptiv);

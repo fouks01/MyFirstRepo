@@ -3,8 +3,7 @@ console.log(typeof title);
 
 const screens = "Простые, Сложные, Интерактивные";
 console.log(screens.length);
-console.log(screens.toLocaleLowerCase());
-console.log(screens.split(", "));
+console.log(screens.toLocaleLowerCase().split(", "));
 
 const screenPrice = 3;
 console.log("Стоимость верстки экранов " + screenPrice + " юайней");

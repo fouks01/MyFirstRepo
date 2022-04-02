@@ -54,6 +54,7 @@ const getRollbackMessage = function (price) {
 
 allServicePrices = getAllServicePrices(servicePrice1, servicePrice2);
 fullPrice = getFullPrice(screenPrice, allServicePrices);
+title = getTitle(title);
 servicePercentPrice = getServicePercentPrices(fullPrice, rollback);
 
 showTypeOf(title);

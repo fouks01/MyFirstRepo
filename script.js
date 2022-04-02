@@ -62,9 +62,9 @@ showTypeOf(screenPrice);
 showTypeOf(adaptiv);
 showTypeOf(fullPrice);
 
-console.log(getAllServicePrices(servicePrice1, servicePrice2));
-console.log(getFullPrice(screenPrice, allServicePrices));
-console.log(getServicePercentPrices(fullPrice, rollback));
+console.log(allServicePrices);
+console.log(fullPrice);
+console.log(servicePercentPrice);
 console.log(getRollbackMessage(fullPrice));
 console.log("Типы экранов " + screens);
-console.log(getTitle(title));
+console.log(title);

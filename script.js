@@ -1,28 +1,76 @@
 'use strict';
 
-let title = prompt('Как называется ваш проект?', "Калькулятор верстки");
-let screens = prompt("Какие типы экранов нужно разработать?", "Простые, Сложные, Интерактивные");
-let screenPrice = +prompt('Сколько будет стоить данная работа?', '12000');
-
+let title;
+let screens;
+let screenPrice;
 let fullPrice;
 let allServicePrices;
 let rollback = 12;
-let adaptiv = confirm("Нужен ли адаптив на сайте?");
+let adaptiv;
 let servicePercentPrice;
+let service1;
+let service2;
 
 
-let service1 = prompt('Какой дополнительный тип услуги нужен?', 'Верстка сайта');
-let servicePrice1 = +prompt('Сколько это будет стоить?', '10000');
-let service2 = prompt('Какой дополнительный тип услуги нужен?', "Слайдеры");
-let servicePrice2 = +prompt('Сколько это будет стоить?', '10000');
+const isNumber = function (num) {
+  return !isNaN(parseFloat(num)) && isFinite(num);
+};
+
+const asking = function () {
+  title = prompt('Как называется ваш проект?', "Калькулятор верстки");
+  screens = prompt("Какие типы экранов нужно разработать?", "Простые, Сложные, Интерактивные");
+
+  do {
+    screenPrice = prompt('Сколько будет стоить данная работа?');
+  } while (!isNumber(screenPrice));
+  // {
+  //   screenPrice = +prompt('Сколько будет стоить данная работа?');
+  // }
+
+  adaptiv = confirm("Нужен ли адаптив на сайте?");
+};
 
 const showTypeOf = function (variable) {
   console.log(variable, typeof variable);
 };
 
 
-const getAllServicePrices = function (a, b) {
-  return a + b;
+// const getAllServicePrices = function () {
+//   let sum = 0;
+
+//   for (let i = 0; i < 2; i++) {
+
+//     if (i === 0) {
+//       service1 = prompt('Какой дополнительный тип услуги нужен?', 'Верстка сайта');
+//     } else if (i === 1) {
+//       service2 = prompt('Какой дополнительный тип услуги нужен?', 'Слайдер');
+//     }
+
+//     sum += +prompt('Сколько это будет стоить?', '10000');
+//   }
+//   return sum;
+// };
+
+const getAllServicePrices = function () {
+  let sum = 0;
+  let newre;
+
+  for (let i = 0; i < 2; i++) {
+
+    if (i === 0) {
+      service1 = prompt('Какой дополнительный тип услуги нужен?', 'Верстка сайта');
+    } else if (i === 1) {
+      service2 = prompt('Какой дополнительный тип услуги нужен?', 'Слайдер');
+    }
+
+    do {
+      newre = prompt('Сколько это будет стоить?', '10000');
+    }
+    while (!isNumber(newre));
+    sum += +newre;
+
+  }
+  return sum;
 };
 
 function getFullPrice(a, b) {
@@ -52,8 +100,9 @@ const getRollbackMessage = function (price) {
   }
 };
 
-allServicePrices = getAllServicePrices(servicePrice1, servicePrice2);
-fullPrice = getFullPrice(screenPrice, allServicePrices);
+asking();
+allServicePrices = getAllServicePrices();
+fullPrice = getFullPrice(+screenPrice, allServicePrices);
 title = getTitle(title);
 servicePercentPrice = getServicePercentPrices(fullPrice, rollback);
 
@@ -62,9 +111,11 @@ showTypeOf(screenPrice);
 showTypeOf(adaptiv);
 showTypeOf(fullPrice);
 
-console.log(getAllServicePrices(servicePrice1, servicePrice2));
-console.log(getFullPrice(screenPrice, allServicePrices));
-console.log(getServicePercentPrices(fullPrice, rollback));
+console.log("allServicePrices", allServicePrices);
+
+console.log(allServicePrices);
+console.log(fullPrice);
+console.log(servicePercentPrice);
 console.log(getRollbackMessage(fullPrice));
 console.log("Типы экранов " + screens);
-console.log(getTitle(title));
+console.log(title);

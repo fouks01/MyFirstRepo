@@ -1,18 +1,20 @@
 'use strict';
 
-const title = prompt('Как называется ваш проект?', "Калькулятор верстки");
-const screens = prompt("Какие типы экранов нужно разработать?", "Простые, Сложные, Интерактивные");
-const screenPrice = +prompt('Сколько будет стоить данная работа?', '12000');
-const service1 = prompt('Какой дополнительный тип услуги нужен?', 'Верстка сайта');
-const servicePrice1 = +prompt('Сколько это будет стоить?', '10000');
-const service2 = prompt('Какой дополнительный тип услуги нужен?', "Слайдеры");
-const servicePrice2 = +prompt('Сколько это будет стоить?', '10000');
+let title = prompt('Как называется ваш проект?', "Калькулятор верстки");
+let screens = prompt("Какие типы экранов нужно разработать?", "Простые, Сложные, Интерактивные");
+let screenPrice = +prompt('Сколько будет стоить данная работа?', '12000');
+
 let fullPrice;
 let allServicePrices;
-const rollback = 12;
+let rollback = 12;
 let adaptiv = confirm("Нужен ли адаптив на сайте?");
 let servicePercentPrice;
 
+
+let service1 = prompt('Какой дополнительный тип услуги нужен?', 'Верстка сайта');
+let servicePrice1 = +prompt('Сколько это будет стоить?', '10000');
+let service2 = prompt('Какой дополнительный тип услуги нужен?', "Слайдеры");
+let servicePrice2 = +prompt('Сколько это будет стоить?', '10000');
 
 const showTypeOf = function (variable) {
   console.log(variable, typeof variable);

@@ -89,9 +89,9 @@ const getServicePercentPrices = function (a, b) {
 };
 
 const getRollbackMessage = function (price) {
-  if (price > 30000) {
+  if (price >= 30000) {
     return "Даем скидку в 10% " + Math.ceil(servicePercentPrice * 0.1);
-  } else if (15000 < price && price < 30000) {
+  } else if (15000 <= price && price < 30000) {
     return "Даем скидку в 5% " + Math.ceil(servicePercentPrice * 0.05);
   } else if (0 < price && price < 15000) {
     return "Скидка не предусмотрена " + Math.ceil(servicePercentPrice);

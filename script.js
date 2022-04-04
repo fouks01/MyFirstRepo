@@ -27,4 +27,4 @@ function findNumber(a) {
 
 };
 
-console.log(findNumber(43));
+console.log(findNumber(parseInt(Math.random() * 101)));

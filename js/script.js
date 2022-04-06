@@ -1,33 +1,28 @@
 'use strict';
 
-const titleh1 = document.getElementsByTagName('h1');
-console.log(titleh1[0].innerText);
-
+const titleMain = document.getElementsByTagName('h1');
 const cancel = document.getElementsByClassName('handler_btn');
-console.log(cancel.start, cancel.reset);
-
 const plus = document.querySelector('.screen-btn');
-console.log(plus);
-
-const items = document.querySelectorAll('.other-items.percent');
-const another = document.querySelectorAll('.other-items.number');
-console.log(items, another);
-
+const itemPercent = document.querySelectorAll('.other-items.percent');
+const itemNumber = document.querySelectorAll('.other-items.number');
 const input = document.querySelector('.rollback input[type=range]');
-console.log(input);
-
 const ran = document.querySelector('.rollback span.range-value');
-console.log(ran);
-
 const total = document.getElementsByClassName('total-input');
-const total0 = total[0];
-const total1 = total[1];
-const total2 = total[2];
-const total3 = total[3];
-const total4 = total[4];
-console.log(total0, total1, total2, total3, total4);
-
+const priceWork = total[0];
+const numberScreens = total[1];
+const addPrice = total[2];
+const allPrice = total[3];
+const rollPrice = total[4];
 let screen = document.querySelectorAll('.screen');
+
+
+console.log(titleMain[0].innerText);
+console.log(cancel[0], cancel[1]);
+console.log(plus);
+console.log(itemPercent, itemNumber);
+console.log(input);
+console.log(ran);
+console.log(priceWork, numberScreens, addPrice, allPrice, rollPrice);
 console.log(screen);
 
 const appData = {

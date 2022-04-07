@@ -2,6 +2,8 @@
 
 const titleMain = document.getElementsByTagName('h1');
 const cancel = document.getElementsByClassName('handler_btn');
+const reset = cancel[1];
+const sum = cancel[0];
 const plus = document.querySelector('.screen-btn');
 const itemPercent = document.querySelectorAll('.other-items.percent');
 const itemNumber = document.querySelectorAll('.other-items.number');
@@ -17,7 +19,7 @@ let screen = document.querySelectorAll('.screen');
 
 
 console.log(titleMain[0].innerText);
-console.log(cancel[0], cancel[1]);
+console.log(reset, sum);
 console.log(plus);
 console.log(itemPercent, itemNumber);
 console.log(input);

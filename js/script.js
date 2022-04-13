@@ -65,10 +65,12 @@ const appData = {
             const select = screen.querySelector('select');
             const input = screen.querySelector('input');
             // screens[index + 1].style.display = 'none';
+            inputBlocking.value = '';
+            selectBlocking.value = '';
             select.disabled = false;
             input.disabled = false;
             // screens[index + 1].remove(screens);
-            screens[index + 1].remove()
+            screens[index + 1].remove(screens);
 
 
 
@@ -96,8 +98,8 @@ const appData = {
         ran.textContent = 0 + "%";
         appData.rollback = 0;
 
-        inputBlocking.value = '';
-        selectBlocking.value = '';
+        // inputBlocking.value = '';
+        // selectBlocking.value = '';
         total[0].value = 0;
         total[1].value = 0;
         total[2].value = 0;

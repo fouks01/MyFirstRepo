@@ -34,10 +34,44 @@ const appData = {
     servicesPercent: {},
     servicesNumber: {},
 
+    blockButton: function () {
+        screens = document.querySelectorAll('.screen');
+        let screenSelect = document.querySelectorAll('.screen .main-controls__select');
+        let screensInput = document.querySelectorAll('.screen .main-controls__input');
+
+        let selectError;
+        let inputError;
+
+        screenSelect.forEach(screen => {
+            const select = screen.querySelector('select');
+            const selectName = select.options[select.selectedIndex].textContent;
+            if (selectName === 'Тип экранов') {
+                selectError = selectName;
+                return selectError;
+            }
+        });
+
+        screensInput.forEach(screen => {
+            const input = screen.querySelector('input');
+
+            if (input.value.trim().length === 0) {
+                inputError = input.value;
+                return inputError;
+            }
+        });
+
+        if (selectError !== 'Тип экранов' && inputError !== '') {
+            appData.start();
+            appData.blocking()
+        } else {
+            // alert('Ошибка')
+            return;
+        }
+    },
+
     blocking: function () {
-        appData.start();
-        const inputBlocking = document.querySelector('input[type=text]');
-        const selectBlocking = document.querySelector('select');
+        // const inputBlocking = document.querySelector('input[type=text]');
+        // const selectBlocking = document.querySelector('select');
 
         screens = document.querySelectorAll('.screen');
 
@@ -48,31 +82,30 @@ const appData = {
             input.disabled = true;
 
         });
-
-
         sum.style.display = 'none';
         resetBtn.style.display = 'block';
 
         // console.log(appData.screens.length);
     },
 
+
     resetting: function () {
-        const inputBlocking = document.querySelector('input[type=text]');
-        const selectBlocking = document.querySelector('select');
+
+        const screenBlocks = document.querySelectorAll('.main-controls__item.screen');
+
+        for (let i = 1; i < screenBlocks.length; i++) {
+            screenBlocks[i].remove(screenBlocks[i]);
+        }
 
         screens = document.querySelectorAll('.screen');
         screens.forEach((screen, index) => {
             const select = screen.querySelector('select');
             const input = screen.querySelector('input');
-            // screens[index + 1].style.display = 'none';
-            inputBlocking.value = '';
-            selectBlocking.value = '';
+
+            select.value = '';
+            input.value = '';
             select.disabled = false;
             input.disabled = false;
-            // screens[index + 1].remove(screens);
-            screens[index + 1].remove(screens);
-
-
 
         });
 
@@ -87,28 +120,17 @@ const appData = {
         });
 
 
-        // document.querySelector('.rollback input[type=range]').reset();
-
-        // appData.rollbackResult.reset();
-
-
-        // screens.value = 0;
         input.value = 0;
         ran.value = 0;
         ran.textContent = 0 + "%";
         appData.rollback = 0;
-
-        // inputBlocking.value = '';
-        // selectBlocking.value = '';
         total[0].value = 0;
         total[1].value = 0;
         total[2].value = 0;
         total[3].value = 0;
         total[4].value = 0;
         appData.screens.length = 0;
-        // inputBlocking.disabled = false;
 
-        // selectBlocking.disabled = false;
         resetBtn.style.display = 'none';
         sum.style.display = 'block';
 
@@ -117,7 +139,7 @@ const appData = {
 
     init: function () {
         this.addTitle();
-        sum.addEventListener('click', this.blocking);
+        sum.addEventListener('click', this.blockButton);
         plus.addEventListener('click', this.addScreenBlock);
         input.addEventListener('change', this.rollbackResult);
         resetBtn.addEventListener('click', this.resetting);
@@ -184,17 +206,17 @@ const appData = {
             const input = screen.querySelector('input');
             const selectValue = select.options[select.selectedIndex].value;
             const selectName = select.options[select.selectedIndex].textContent;
-            if (selectValue === '' || input.value === 0 || input.value === '') {
-                appData.screens.length = 0;
-                return;
-            } else {
-                appData.screens.push({
-                    id: index,
-                    name: selectName,
-                    price: +select.value * +input.value,
-                    count: +input.value
-                });
-            }
+            // if (selectValue === '' || input.value === 0 || input.value === '') {
+            // appData.screens.length = 0;
+            // return;
+            // } else {
+            appData.screens.push({
+                id: index,
+                name: selectName,
+                price: +select.value * +input.value,
+                count: +input.value
+            });
+            // }
             countSum += +appData.screens[index].count;
         });
 

@@ -70,9 +70,6 @@ const appData = {
     },
 
     blocking: function () {
-        // const inputBlocking = document.querySelector('input[type=text]');
-        // const selectBlocking = document.querySelector('select');
-
         screens = document.querySelectorAll('.screen');
 
         screens.forEach((screen, index) => {
@@ -85,7 +82,6 @@ const appData = {
         sum.style.display = 'none';
         resetBtn.style.display = 'block';
 
-        // console.log(appData.screens.length);
     },
 
 
@@ -119,16 +115,26 @@ const appData = {
             check.checked = false;
         });
 
-
         input.value = 0;
         ran.value = 0;
         ran.textContent = 0 + "%";
         appData.rollback = 0;
-        total[0].value = 0;
-        total[1].value = 0;
-        total[2].value = 0;
-        total[3].value = 0;
-        total[4].value = 0;
+
+        appData.screenPrice = 0;
+        appData.fullPrice = 0;
+        appData.servicePricesPercent = 0;
+        appData.servicePricesNumber = 0;
+        appData.rollback = 0;
+        appData.servicePercentPrice = 0;
+        countSum = 0;
+
+        priceWork.value = 0;
+        addPrice.value = 0;
+        allPrice.value = 0;
+        rollPrice.value = 0;
+        numberScreens.value = 0;
+
+
         appData.screens.length = 0;
 
         resetBtn.style.display = 'none';
@@ -178,7 +184,13 @@ const appData = {
 
     addScreenBlock: function () {
         const cloneScreen = screens[0].cloneNode(true);
-        screens[screens.length - 1].after(cloneScreen);
+
+        const inputs = cloneScreen.querySelectorAll('input');
+        inputs.forEach((item) => {
+            item.value = '';
+        });
+        plus.before(cloneScreen);
+        // screens[screens.length - 1].after(cloneScreen);
     },
 
     addPrices: function () {
